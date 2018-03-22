@@ -1,2 +1,23 @@
 !_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+ALLOWED_HOSTS	/home/heltucosta/Projects/Tribu/Tribu/settings.py	/^ALLOWED_HOSTS = []$/;"	v	language:Python
+AUTH_PASSWORD_VALIDATORS	/home/heltucosta/Projects/Tribu/Tribu/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	v	language:Python
+BASE_DIR	/home/heltucosta/Projects/Tribu/Tribu/settings.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	v	language:Python
+DATABASES	/home/heltucosta/Projects/Tribu/Tribu/settings.py	/^DATABASES = {$/;"	v	language:Python
+DEBUG	/home/heltucosta/Projects/Tribu/Tribu/settings.py	/^DEBUG = True$/;"	v	language:Python
+INSTALLED_APPS	/home/heltucosta/Projects/Tribu/Tribu/settings.py	/^INSTALLED_APPS = [$/;"	v	language:Python
+LANGUAGE_CODE	/home/heltucosta/Projects/Tribu/Tribu/settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	v	language:Python
+MIDDLEWARE	/home/heltucosta/Projects/Tribu/Tribu/settings.py	/^MIDDLEWARE = [$/;"	v	language:Python
+ROOT_URLCONF	/home/heltucosta/Projects/Tribu/Tribu/settings.py	/^ROOT_URLCONF = 'Tribu.urls'$/;"	v	language:Python
+SECRET_KEY	/home/heltucosta/Projects/Tribu/Tribu/settings.py	/^SECRET_KEY = 'bqe8j$*1tey-ms(z!514bnk-1m&b)r-(c-^#0(zab$se9##pp3'$/;"	v	language:Python
+STATICFILES_DIRS	/home/heltucosta/Projects/Tribu/Tribu/settings.py	/^STATICFILES_DIRS = [$/;"	v	language:Python
+STATIC_DIR	/home/heltucosta/Projects/Tribu/Tribu/settings.py	/^STATIC_DIR = os.path.join(BASE_DIR, 'static')$/;"	v	language:Python
+STATIC_ROOT	/home/heltucosta/Projects/Tribu/Tribu/settings.py	/^STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')$/;"	v	language:Python
+STATIC_URL	/home/heltucosta/Projects/Tribu/Tribu/settings.py	/^STATIC_URL = '\/static\/'$/;"	v	language:Python
+TEMPLATES	/home/heltucosta/Projects/Tribu/Tribu/settings.py	/^TEMPLATES = [$/;"	v	language:Python
+TEMPLATE_DIR	/home/heltucosta/Projects/Tribu/Tribu/settings.py	/^TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')$/;"	v	language:Python
+TIME_ZONE	/home/heltucosta/Projects/Tribu/Tribu/settings.py	/^TIME_ZONE = 'UTC'$/;"	v	language:Python
 urlpatterns	/home/heltucosta/Projects/Tribu/Tribu/urls.py	/^urlpatterns = [$/;"	v	language:Python
+USE_I18N	/home/heltucosta/Projects/Tribu/Tribu/settings.py	/^USE_I18N = True$/;"	v	language:Python
+USE_L10N	/home/heltucosta/Projects/Tribu/Tribu/settings.py	/^USE_L10N = True$/;"	v	language:Python
+USE_TZ	/home/heltucosta/Projects/Tribu/Tribu/settings.py	/^USE_TZ = True$/;"	v	language:Python
+WSGI_APPLICATION	/home/heltucosta/Projects/Tribu/Tribu/settings.py	/^WSGI_APPLICATION = 'Tribu.wsgi.application'$/;"	v	language:Python
