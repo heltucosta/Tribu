@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Cliente</h2>
+
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <td>Nome Fantasia</td>
+            <td>{{cliente.name}}</td>
+        </tr>
+        <tr>
+            <td>Razão Social</td>
+            <td>{{cliente.razao_social}}</td>
+        </tr>
+        <tr>
+            <td>CNPJ</td>
+            <td>{{cliente.cnpj}}</td>
+        </tr>
+        <tr>
+            <td>Endereço</td>
+            <td>{{cliente.endereco}}</td>
+        </tr>
+        <tr>
+            <td>Telefone</td>
+            <td>{{cliente.telefone}}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{cliente.email}}</td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

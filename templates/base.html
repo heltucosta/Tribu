@@ -25,22 +25,11 @@
       </div>
     </nav>
 
-    <div class="container">
-    	<form class="form-horizontal">
-		<div class="form-group">
-		    <label class='teste' for="nomeEmpresa">Nome: </label>
-		    <input type="text" class="form-control" id="nomeEmpresa" placeholder="Nome fantasia">
-		</div>
+    {% block content %}
+    {% endblock %}
 
-	    </form> 
-		<div class="form-group">
-		    <label>Adicionar nova compensação</label>
-		    <button class="btn btn-success addComp">
-			<i class="fa fa-plus"></i></i>
-		    </button>
-		</div>
+    <div class="container">
     </div>
-   
 	<script src="{% static 'js/jquery.min.js' %}"></script>
 	<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 	<script src="{% static 'js/jquery.easing.min.js' %}"></script>
