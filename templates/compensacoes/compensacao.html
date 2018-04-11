@@ -5,16 +5,25 @@
 <form enctype="multipart/form-data" action="{% url 'compensacao' %}" method='post'>
     {% csrf_token %}
     <div class="form-group">
+        <label ="compensation_clients">Cliente</label>
+        <select class="form-control" name="cliente"
+            id="compensations_clients">
+            {% for cliente in clientes %}
+            <option value="{{cliente.id}}">{{ cliente.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
         <label for="compensation_types">Tipo de compensação</label>
         <select class="form-control" name="tipo" id="compensation_types">
             {% for tipo in compensation_types %}
-            <option>{{ tipo.name }}</option>
+            <option value="{{tipo.id}}">{{ tipo.name }}</option>
             {% endfor %}
         </select>
     </div>
     <div class="form-group">
         <label for="compensation">Compensação</label>
-        <select class="form-control" name="nome" id="compensation_types">
+        <select class="form-control" name="nome" id="compensation">
             {% for compensacao in compensacoes %}
             <option>{{ compensacao }}</option>
             {% endfor %}

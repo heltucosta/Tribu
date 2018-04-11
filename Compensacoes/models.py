@@ -8,7 +8,7 @@ class Compensations(models.Model):
     date_start = models.DateField('Data de início')
     date_end = models.DateField('Data fim')
     cliente = models.ForeignKey(Businesses, on_delete=models.CASCADE)
-    tipo = models.OneToOneField("CompensationTypes", on_delete=models.CASCADE)
+    tipo = models.ForeignKey("CompensationTypes", on_delete=models.CASCADE)
     pdf = models.FileField(upload_to='compensacoes')
 
     def __str__(self):
