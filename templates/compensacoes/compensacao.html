@@ -1,12 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %} 
+{% if alert %}
+<div class="alert alert-success">
+    <strong>Successo!</strong> {{alert}}
+</div></strong></div>
+{% endif %}
+{% if error %}
+<div class="alert alert-danger">
+    <strong>Erro. Você deve enviar o arquivo da compensação!</strong> 
+</div></strong></div>
+{% endif %}
 <h2>Criar compensação</h2>
 <form enctype="multipart/form-data" action="{% url 'compensacao' %}" method='post'>
     {% csrf_token %}
     <div class="form-group">
         <label ="compensation_clients">Cliente</label>
-        <select class="form-control" name="cliente"
+        <select class="form-control" name="cliente" required
             id="compensations_clients">
             {% for cliente in clientes %}
             <option value="{{cliente.id}}">{{ cliente.name }}</option>
@@ -15,7 +25,8 @@
     </div>
     <div class="form-group">
         <label for="compensation_types">Tipo de compensação</label>
-        <select class="form-control" name="tipo" id="compensation_types">
+        <select class="form-control" name="tipo" id="compensation_types"
+            required>
             {% for tipo in compensation_types %}
             <option value="{{tipo.id}}">{{ tipo.name }}</option>
             {% endfor %}
@@ -23,7 +34,7 @@
     </div>
     <div class="form-group">
         <label for="compensation">Compensação</label>
-        <select class="form-control" name="nome" id="compensation">
+        <select class="form-control" name="nome" id="compensation" required>
             {% for compensacao in compensacoes %}
             <option>{{ compensacao }}</option>
             {% endfor %}
@@ -31,7 +42,7 @@
     </div>
     <div class="form-group">
         <label for="arquivo">Arquivo *.csv da compensação</label><br>
-        <input name="arquivo" type="file" id="arquivo" />
+        <input name="arquivo" type="file" id="arquivo" required />
         <p class="help-block">Organização: mes, valor</p>
     </div>
     <button type="submit" class="btn btn-success">Enviar</button>

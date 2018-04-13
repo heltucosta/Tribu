@@ -1,0 +1,34 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<h4 text-align="center">{{ compensacao.cliente.name }}</h4>
+<p text-align="center">{{ compensacao.cliente.address }}</p>
+<p text-align="center">{{ compensacao.cliente.cnpj }}</p>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Mês/Ano</th>
+                <th>{{ compensacao.name }}</th>
+                <th>% INSS</th>
+                <th>Valor</th>
+                <th>Selic</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for idx, compensation in compensations.iterrows %}
+        <tr>
+            <td>{{ compensation.0 }}</td>
+            <td>{{ compensation.1 }}</td>
+            <td>{{ compensation.2 }}%</td>
+            <td>R$ {{ compesation.3 }}</td>
+            <td>{{ compensation.4 }}%</td>
+            <td>R$ {{ compensation.5 }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

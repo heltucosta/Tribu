@@ -19,4 +19,4 @@ class CompensationTypes(models.Model):
 
 class Selic(models.Model):
     value = models.DecimalField('Valor', max_digits = 12, decimal_places = 2)
-    period = models.DateTimeField('Período')
+    period = models.DateField('Período')
