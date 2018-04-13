@@ -1,9 +1,9 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<h4 text-align="center">{{ compensacao.cliente.name }}</h4>
-<p text-align="center">{{ compensacao.cliente.address }}</p>
-<p text-align="center">{{ compensacao.cliente.cnpj }}</p>
+<h4 style="text-align:center">{{ compensacao.cliente.name }}</h4>
+<p style="text-align:center">{{ compensacao.cliente.address }}</p>
+<p style="text-align:center">{{ compensacao.cliente.cnpj }}</p>
 
 <div class="table-responsive">
     <table class="table">
@@ -21,13 +21,21 @@
         {% for idx, compensation in compensations.iterrows %}
         <tr>
             <td>{{ compensation.0 }}</td>
-            <td>{{ compensation.1 }}</td>
+            <td>R$ {{ compensation.1 }}</td>
             <td>{{ compensation.2 }}%</td>
-            <td>R$ {{ compesation.3 }}</td>
+            <td>R$ {{ compensation.3 }}</td>
             <td>{{ compensation.4 }}%</td>
             <td>R$ {{ compensation.5 }}</td>
         </tr>
         {% endfor %}
+	<tr>
+		<td>Total</td>
+		<td>R$ {{ total.0 }}</td>
+		<td> - </td>
+		<td>R$ {{ total.1 }}</td>
+		<td> - </td>
+		<td>R$ {{ total.2 }}</td>
+	</tr>
         </tbody>
     </table>
 </div>

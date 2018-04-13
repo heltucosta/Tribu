@@ -79,12 +79,17 @@ def index(request):
                                                    'Total'])
 
         # realizado calculo de compensacao mensal por selic
+        compensacaoTotal, INSSTotal, CalculoTotal = 0, 0, 0
         for idx, selic in enumerate(selics):
             strDate = selic.period.strftime("%b/%y")
             numDate = selic.period.strftime("%m/%Y")
             valor = df.valor[idx]
             valorINSS = valor*0.2
             total = valorINSS + valorINSS * selic.value.__float__()/100.0
+
+            compensacaoTotal += valor
+            INSSTotal += valorINSS
+            CalculoTotal += total
 
             # Compensacao intermediaria
             newCompensation = pd.DataFrame([
@@ -111,6 +116,7 @@ def index(request):
         context = {
             'compensacao': compensacao,
             'compensations': compensationArrays,
+            'total': [compensacaoTotal, INSSTotal, CalculoTotal]
         }
 
         return render(request, 'pdf.html', context)
