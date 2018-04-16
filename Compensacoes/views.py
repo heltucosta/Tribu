@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.core.files import File
 from django.http import HttpResponse
 from .models import *
 import pandas as pd
@@ -6,6 +7,10 @@ import numpy as np
 from .models import *
 from Businesses.models import *
 from datetime import datetime, timedelta
+from django.template.loader import render_to_string
+from Tribu import settings
+import os
+from weasyprint import HTML, CSS
 
 # Create your views here.
 def index(request):
@@ -61,7 +66,6 @@ def index(request):
         # leitura do arquivo CSV
         df = pd.read_csv(request.FILES['arquivo'])
         df.columns=['valor', 'mes']
-
         # Parse de datas iniciais e finais da compensacao
         compensationStartDate = datetime.strptime("01/"+df.mes[df.index[0]], '%d/%m/%Y')
         compensationEndDate = datetime.strptime("01/"+df.mes[df.index[-1]], '%d/%m/%Y')
@@ -109,9 +113,9 @@ def index(request):
         compensacao.tipo = CompensationTypes.objects.get(id = request.POST['tipo'])
         compensacao.cliente = Businesses.objects.get(id =
                                                     request.POST['cliente'])
-        compensacao.pdf = request.FILES['arquivo'] 
         compensacao.date_start = datetime.now()
         compensacao.date_end = datetime.now()
+
 
         context = {
             'compensacao': compensacao,
@@ -119,14 +123,51 @@ def index(request):
             'total': [compensacaoTotal, INSSTotal, CalculoTotal]
         }
 
-        return render(request, 'pdf.html', context)
+        css = "body{ \
+                    margin: 40px 10%; \
+                } \
+                body, h4, p { \
+                    text-align: center; \
+                } \
+                table { \
+                    width: 100%; \
+                    border-spacing: 0; \
+                } \
+                thead > tr { \
+                    background-color: lightgray; \
+                    line-height: 30px;\
+                } \
+                thead, tr, th { \
+                    border-bottom: 2px solid black; \
+                } \
+                tbody, tr { \
+                    line-height: 30px; \
+                } \
+                tr:last-child { \
+                    background-color: lightgray; \
+                } \
+                tbody, th { \
+                    border-top: 2px solid black; \
+                }"
 
+        pdf = render_to_string('pdf.html', context)
+
+        HTML(string=pdf).write_pdf('compensacao.pdf',
+                                          stylesheets=[CSS(string=css)])
+
+        f = open('compensacao.pdf', 'rb')
+
+        compensacao.pdf.save("{}{}.pdf".format(compensacao.cliente.name,
+                                           compensacao.date_start), File(f))
         compensacao.save()
+
         clientes = Businesses.objects.all()
 
         context = {
             'clientes': clientes,
             'alert': 'Compensação enviada'
         }
+
+        f.close()
 
         return render(request, 'businesses/home.html', context)

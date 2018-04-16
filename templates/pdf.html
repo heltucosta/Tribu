@@ -1,42 +1,49 @@
-{% extends 'base.html'%}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>TCR Systems</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 		<meta name="description" content="">
+	        <meta name="author" content="">
+	</head>
+	<body>
+		<h4>{{ compensacao.cliente.name }}</h4>
+		<p>{{ compensacao.cliente.address }}</p>
+        <p>{{ compensacao.cnpj }}</p>
 
-{% block content %}
-<h4 style="text-align:center">{{ compensacao.cliente.name }}</h4>
-<p style="text-align:center">{{ compensacao.cliente.address }}</p>
-<p style="text-align:center">{{ compensacao.cliente.cnpj }}</p>
+	        <table>
+	        <thead class="thead-dark">
+	            <tr>
+	                <th>Mês/Ano</th>
+	                <th>{{ compensacao.name }}</th>
+        	        <th>% INSS</th>
+                	<th>Valor</th>
+	                <th>Selic</th>
+        	        <th>Total</th>
+	            </tr>
+        	</thead>
+	        <tbody>
+        	{% for idx, compensation in compensations.iterrows %}
+	        <tr>
+        	    <td>{{ compensation.0 }}</td>
+	            <td>R$ {{ compensation.1 | stringformat:".2f" }}</td>
+	            <td>{{ compensation.2 | stringformat:".2f" }}%</td>
+        	    <td>R$ {{ compensation.3 | stringformat:".2f" }}</td>
+	            <td>{{ compensation.4 | stringformat:".2f" }}%</td>
+        	    <td>R$ {{ compensation.5 | stringformat:".2f" }}</td>
+	        </tr>
+        	{% endfor %}
+		<tr>
+			<th>Total</th>
+			<th>R$ {{ total.0 | stringformat:".2f"}}</th>
+			<th> - </th>
+			<th>R$ {{ total.1 | stringformat:".2f"}}</th>
+			<th> - </th>
+			<th>R$ {{ total.2 | stringformat:".2f"}}</th>
+		</tr>
+	        </tbody>
+	    </table>
+	</body>
+</html>
 
-<div class="table-responsive">
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th>Mês/Ano</th>
-                <th>{{ compensacao.name }}</th>
-                <th>% INSS</th>
-                <th>Valor</th>
-                <th>Selic</th>
-                <th>Total</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for idx, compensation in compensations.iterrows %}
-        <tr>
-            <td>{{ compensation.0 }}</td>
-            <td>R$ {{ compensation.1 }}</td>
-            <td>{{ compensation.2 }}%</td>
-            <td>R$ {{ compensation.3 }}</td>
-            <td>{{ compensation.4 }}%</td>
-            <td>R$ {{ compensation.5 }}</td>
-        </tr>
-        {% endfor %}
-	<tr>
-		<td>Total</td>
-		<td>R$ {{ total.0 }}</td>
-		<td> - </td>
-		<td>R$ {{ total.1 }}</td>
-		<td> - </td>
-		<td>R$ {{ total.2 }}</td>
-	</tr>
-        </tbody>
-    </table>
-</div>
-{% endblock %}

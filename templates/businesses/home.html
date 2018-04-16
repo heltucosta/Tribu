@@ -12,7 +12,7 @@
             <td><a href="{% url 'cliente' cliente.id %}">{{ cliente.name }}</a></td>
             <td>
             {% for compensation in cliente.compensations_set.all %}
-		    {{ compensation.name }}
+            <a href="{{ compensation.pdf.url }}">{{ compensation.name }}</a>
 		    {% if compensation != cliente.compensations_set.last %}
 		    ,
 		    {% endif %}
