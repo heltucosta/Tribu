@@ -26,7 +26,7 @@ SECRET_KEY = 'bqe8j$*1tey-ms(z!514bnk-1m&b)r-(c-^#0(zab$se9##pp3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['powerful-retreat-52911.herokuapp.com']
 
 # Application definition
 
