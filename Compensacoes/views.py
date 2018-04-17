@@ -152,7 +152,7 @@ def index(request):
 
         pdf = render_to_string('pdf.html', context)
 
-        HTML(string=pdf).write_pdf('compensacao.pdf',
+        HTML(string=pdf.encode('utf-8')).write_pdf('compensacao.pdf',
                                           stylesheets=[CSS(string=css)])
 
         f = open('compensacao.pdf', 'rb')
@@ -171,3 +171,19 @@ def index(request):
         f.close()
 
         return render(request, 'businesses/home.html', context)
+
+def pdf_view(request, compensation_id):
+    try:
+        compensation = Compensations.objects.get(id = compensation_id)
+    except:
+        context = {
+            'message': 'Compensação não encontrada.'
+        }
+
+        return render(request, 'businesses/home.html', context)
+
+    with open(compensation.pdf.path, 'rb') as pdf:
+        response = HttpResponse(pdf.read(), content_type='application/pdf')
+ #       response['Content-Disposition'] = 'inline; filename='+compensation.pdf
+        return response
+    pdf.closed

@@ -9,10 +9,10 @@
 		</tr>
 		{% for cliente in clientes %}
 		<tr>
-            <td><a href="{% url 'cliente' cliente.id %}">{{ cliente.name }}</a></td>
+            <td><a href="{% url 'cliente' cliente.id %}" target="_blank">{{ cliente.name }}</a></td>
             <td>
             {% for compensation in cliente.compensations_set.all %}
-            <a href="{{ compensation.pdf.url }}">{{ compensation.name }}</a>
+            <a href="{% url 'pdf' compensation.id %}">{{ compensation.name }}</a>
 		    {% if compensation != cliente.compensations_set.last %}
 		    ,
 		    {% endif %}
