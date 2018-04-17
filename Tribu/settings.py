@@ -99,7 +99,7 @@ DATABASES = {
         'NAME': 'd543pu4qbcnvr3',
         'USER': 'hdrvtxfzlnxict',
         'PASSWORD':
-        'ae89d476ae4f41d55c4dc7c9a0143d9b5c34027af6a3c27b9ef8d1074a5cc48',
+        'ae89d476ae4f41d55c4dc7c9a0143d9b5c34027af6a3c27b9ef8d1074a5cc485',
         'HOST': 'ec2-54-221-192-231.compute-1.amazonaws.com',
         'PORT': 5432,
     }
